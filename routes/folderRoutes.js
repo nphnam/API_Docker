@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const folder_controller_1 = require("../controllers/folder.controller");
+const auth_1 = require("../middleware/auth");
+const router = express.Router();
+router.post("/create-folder", auth_1.isAuthenticated, folder_controller_1.createFolder);
+router.get("/get-all-folders", auth_1.isAuthenticated, folder_controller_1.getAllFolders);
+router.get("/get-folders-by-userId", auth_1.isAuthenticated, folder_controller_1.getFolderByUserId);
+router.put("/update-folder/:id", auth_1.isAuthenticated, folder_controller_1.updateFolder);
+exports.default = router;

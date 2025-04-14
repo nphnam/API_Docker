@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const card_controller_1 = require("../controllers/card.controller");
+const auth_1 = require("../middleware/auth");
+const router = express.Router();
+router.post("/create-card", auth_1.isAuthenticated, card_controller_1.createCard);
+router.get("/get-all-cards", auth_1.isAuthenticated, card_controller_1.getAllCards);
+router.get("/get-all-card-by-setId/:id", auth_1.isAuthenticated, card_controller_1.getCardBySetId);
+router.put("/update-card/:id", auth_1.isAuthenticated, card_controller_1.updateCard);
+exports.default = router;

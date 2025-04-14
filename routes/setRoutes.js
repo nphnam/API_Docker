@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const set_controller_1 = require("../controllers/set.controller");
+const auth_1 = require("../middleware/auth");
+const router = express.Router();
+router.post("/create-set", auth_1.isAuthenticated, set_controller_1.createSet);
+router.put("/update-set/:id", auth_1.isAuthenticated, set_controller_1.updateSet);
+router.get("/get-all-sets", auth_1.isAuthenticated, set_controller_1.getAllSets);
+router.get("/get-sets-by-folderId/:id", auth_1.isAuthenticated, set_controller_1.getSetByFolderId);
+router.get("/get-sets-by-userId", auth_1.isAuthenticated, set_controller_1.getSetByUserId);
+exports.default = router;
